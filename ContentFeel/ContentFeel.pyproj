@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c302549c-356e-4692-926b-120e36f990a3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>FaceCropper.py</StartupFile>
+    <StartupFile>CustomRecognizer.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,10 +23,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomRecognizer.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="FaceCropper.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatabaseSorter.py" />
+    <Compile Include="Recognizer.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.6" />
