@@ -4,7 +4,7 @@ import glob
 import random
 import numpy as np
 emotions = ["neutral", "anger", "contempt", "disgust", "fear", "happy", "sadness", "surprise"] #Emotion list
-fishface = cv2.face.FisherFaceRecognizer_create() #Initialize fisher face classifier
+#fishface = cv2.face.FisherFaceRecognizer_create() #Initialize fisher face classifier
 data = {}
 
 
@@ -46,7 +46,7 @@ def prediction_files(emotion):
     return prediction    
 
 def crop_faces(files):
-    print("Cropping prediction faces...")
+    print("Cropping faces...")
     cropped = []
     filenumber = 0
 
@@ -55,11 +55,11 @@ def crop_faces(files):
     faceDet_two = cv2.CascadeClassifier("OpenCV_FaceCascade/haarcascade_frontalface_alt2.xml")
     faceDet_three = cv2.CascadeClassifier("OpenCV_FaceCascade/haarcascade_frontalface_alt.xml")
     faceDet_four = cv2.CascadeClassifier("OpenCV_FaceCascade/haarcascade_frontalface_alt_tree.xml")
-
+    i = 1
     for f in files:
-        frame = cv2.imread(f) #Open image
-        cv2.waitKey(0)
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) #Convert image to grayscale
+        #frame = cv2.imread(f) #Open image
+        #cv2.waitKey(0)
+        gray = cv2.cvtColor(f, cv2.COLOR_BGR2GRAY) #Convert image to grayscale
         #Detect face using 4 different classifiers
         face = faceDet.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=10, minSize=(5, 5), flags=cv2.CASCADE_SCALE_IMAGE)
         face_two = faceDet_two.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=10, minSize=(5, 5), flags=cv2.CASCADE_SCALE_IMAGE)
@@ -78,16 +78,16 @@ def crop_faces(files):
             facefeatures = ""
         #Cut and save face
         for (x, y, w, h) in facefeatures: #get coordinates and size of rectangle containing face
-            print ("face found in file: %s" %f)
             gray = gray[y:y+h, x:x+w] #Cut the frame to size
             try:
-                print("trying to resize file")
+                print("trying to resize frame", i)
                 out = cv2.resize(gray, (350, 350)) #Resize face so all images have same size
                 cropped.append(out) #add to array
             except:
                 print("Not a valid file")
                 pass #If error, pass file
         filenumber += 1 #Increment image number
+        i = i + 1 
     return cropped
 
 def make_sets():
@@ -147,4 +147,4 @@ def run_recognizer():
     print("got", (100*correct)/(correct + incorrect), "percent correct!")
     return ((100*correct)/(correct + incorrect))
 
-run_recognizer()
+#run_recognizer()

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c302549c-356e-4692-926b-120e36f990a3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>CustomRecognizer.py</StartupFile>
+    <StartupFile>VideoAnalyzer.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,7 +30,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatabaseSorter.py" />
+    <Compile Include="functions.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Recognizer.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VideoAnalyzer.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
